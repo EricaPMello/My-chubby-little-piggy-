@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Meu Porquinho Gordinho</title>
+    <title>My chubby little Piggy</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,165 +12,293 @@
     <style>
         /* --- ESTILOS GERAIS --- */
         body { 
-            font-family: 'Quicksand', sans-serif; /* Fonte do corpo */
+            font-family: 'Quicksand', 'Verdana', sans-serif; /* Se der erro, usa Verdana */
             text-align: center; 
-            background-color: #f7f9fc; /* Fundo bem clarinho */
-            padding: 15px;
+            background-color: #fff0f5; /* Fundo rosinha bem claro */
+            padding: 10px;
             margin: 0;
-            -webkit-tap-highlight-color: transparent; /* Remove pisca azul no celular */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* --- TÍTULO DO APP --- */
+        h1 {
+            font-family: 'Fredoka', cursive;
+            color: #d63384; /* Rosa escuro */
+            font-size: 1.8rem;
+            margin: 10px 0;
+            text-shadow: 2px 2px 0px #fff;
         }
         
         /* --- CABEÇALHO (PLACAR) --- */
         .placar {
             background: #ffffff;
-            padding: 20px 15px;
-            border-radius: 25px; /* Bordas bem redondas */
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Sombra suave e moderna */
-            margin-bottom: 25px;
+            padding: 20px 10px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.15); /* Sombra rosada */
+            margin-bottom: 20px;
             position: sticky;
-            top: 10px; 
-            z-index: 100;
-            border: 1px solid #edf2f7;
+            top: 5px; 
+            z-index: 50; /* Menor que o pop-up */
+            border: 2px solid #f8d7da;
         }
 
         .img-header {
-            max-width: 140px; /* Tamanho ideal */
+            width: 220px; /* Aumentei bastante a imagem */
+            max-width: 80%;
             height: auto;
             border-radius: 15px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Sombra na própria imagem */
+            margin-bottom: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .placar p { 
-            margin: 5px 0 0 0; 
-            color: #8898aa; 
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
+            margin: 10px 0 0 0; 
+            color: #888; 
+            font-size: 1rem;
+            font-weight: bold;
         }
 
         .total { 
-            font-family: 'Fredoka', sans-serif; /* Fonte gordinha para o dinheiro */
-            font-size: 2.5rem; 
-            color: #2dce89; /* Verde menta vibrante */
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.8rem; 
+            color: #20c997; /* Verde bonito */
             font-weight: 600; 
             margin-top: 5px;
-            text-shadow: 1px 1px 0px #bcefd0;
+            background: #e6fffa;
+            border-radius: 10px;
+            padding: 5px;
         }
 
-        /* --- SELETOR --- */
-        #seletorDesafio {
-            padding: 12px 20px;
-            font-size: 1rem;
+        /* --- SELETOR DE METAS --- */
+        .container-seletor {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            color: #d63384;
+            margin-bottom: 5px;
+        }
+        #seletorMeta {
+            padding: 15px;
+            font-size: 1.1rem;
             font-family: 'Quicksand', sans-serif;
-            font-weight: 700;
-            color: #525f7f;
-            border-radius: 50px; /* Formato de pílula */
-            border: 2px solid #e9ecef;
-            margin-bottom: 30px;
+            font-weight: bold;
+            color: #333;
+            border-radius: 15px;
+            border: 2px solid #d63384;
             background-color: #fff;
             width: 100%;
-            max-width: 320px;
-            cursor: pointer;
+            max-width: 350px;
             outline: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
         /* --- GRADE DE NÚMEROS --- */
         .grid-container {
             display: grid;
-            /* Otimizado para caber bem em qualquer celular */
             grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); 
-            gap: 12px;
-            max-width: 600px;
+            gap: 10px;
+            max-width: 800px;
             margin: 0 auto;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
 
         .botao-valor {
             background: #ffffff;
-            color: #8898aa;
-            border: none;
-            height: 60px; /* Altura fixa para ficar quadradinho fofo */
+            color: #555;
+            border: 2px solid #eee;
+            min-height: 65px;
             font-family: 'Fredoka', sans-serif;
-            font-size: 1.2rem;
-            border-radius: 18px; /* Quase um círculo */
+            font-size: 1.3rem; /* Letra maior */
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico */
-            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            box-shadow: 0 4px 0 #eee; /* Efeito 3D simples */
+            transition: transform 0.1s;
+            position: relative;
         }
 
-        /* Efeito ao passar o mouse ou tocar */
         .botao-valor:active { 
-            transform: scale(0.90); 
+            transform: translateY(4px); 
+            box-shadow: none;
         }
 
         /* --- ESTADO PAGO --- */
         .pago {
-            background: linear-gradient(135deg, #2dce89 0%, #2dcecc 100%); /* Degradê bonito */
+            background-color: #20c997;
             color: white;
-            font-weight: 600;
-            box-shadow: 0 7px 14px rgba(45, 206, 137, 0.3); /* Sombra colorida brilhante */
-            transform: translateY(-2px); /* Sobe um pouquinho */
+            border-color: #1aa179;
+            box-shadow: 0 4px 0 #1aa179;
+        }
+
+        /* --- POP-UP (MODAL) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; /* Fica acima de tudo */
+            backdrop-filter: blur(3px);
+        }
+        
+        .modal-box {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 4px solid #d63384;
+            animation: surgir 0.4s ease-out;
+        }
+
+        @keyframes surgir {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-box h2 {
+            font-family: 'Fredoka', cursive;
+            color: #d63384;
+            margin-top: 0;
+        }
+
+        .modal-box p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .btn-fechar {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* --- RODAPÉ --- */
+        footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #aaa;
+            padding-bottom: 20px;
         }
 
     </style>
 </head>
 <body>
 
+    <div id="tutorialModal" class="modal-overlay">
+        <div class="modal-box">
+            <h2>Bem-vindo ao Cofrinho! 🐷</h2>
+            <p>1. Escolha sua meta financeira.</p>
+            <p>2. A grade mostrará valores de R$ 1,00 até o valor necessário para atingir a meta.</p>
+            <p>3. Deposite o valor no seu banco e marque o número aqui!</p>
+            <button class="btn-fechar" onclick="fecharModal()">Começar a Poupar!</button>
+        </div>
+    </div>
+
+    <h1>My chubby little Piggy</h1>
+
     <div class="placar">
-        <img src="cofrinho.png" alt="Cofre de porquinho" class="img-header">
+        <img src="cofrinho.png" alt="Porquinho fofo" class="img-header">
         
-        <p>Total Acumulado</p>
+        <p>Você já guardou:</p>
         <div class="total" id="displayTotal">R$ 0,00</div>
     </div>
 
-    <select id="seletorDesafio" onchange="mudarDesafioComConfirmacao()">
-        <option value="200">💰 Meta de R$ 200</option>
-        <option value="250">💰 Meta de R$ 250</option>
-        <option value="300">💰 Meta de R$ 300</option>
-    </select>
+    <div class="container-seletor">
+        <label for="seletorMeta">Qual é o seu sonho?</label>
+        <select id="seletorMeta" onchange="mudarMeta()">
+            <option value="10000">Meta: R$ 10.000,00</option>
+            <option value="20000">Meta: R$ 20.000,00</option>
+            <option value="50000">Meta: R$ 50.000,00</option>
+            <option value="100000">Meta: R$ 100.000,00</option>
+            <option value="500000">Meta: R$ 500.000,00</option>
+            <option value="1000000">Meta: R$ 1.000.000,00</option>
+        </select>
+    </div>
 
     <div class="grid-container" id="grid">
         </div>
 
+    <footer>
+        Desenvolvido com carinho 💖
+    </footer>
+
     <script>
         const grid = document.getElementById('grid');
         const displayTotal = document.getElementById('displayTotal');
-        const seletor = document.getElementById('seletorDesafio');
+        const seletor = document.getElementById('seletorMeta');
+        const modal = document.getElementById('tutorialModal');
         let total = 0;
         
-        let dadosSalvos = JSON.parse(localStorage.getItem('meuCofre_dados')) || [];
-        let desafioAtual = localStorage.getItem('meuCofre_desafio') || "200";
+        let dadosSalvos = JSON.parse(localStorage.getItem('piggy_dados')) || [];
+        let metaAtual = localStorage.getItem('piggy_meta') || "10000"; // Padrão 10k
         
-        seletor.value = desafioAtual;
+        // Inicialização
+        seletor.value = metaAtual;
+        
+        // Verifica se o usuário já viu o tutorial (opcional, aqui mostramos sempre ao recarregar para teste)
+        // Se quiser ocultar depois da primeira vez, descomente a linha abaixo:
+        // if(localStorage.getItem('tutorial_visto')) modal.style.display = 'none';
 
-        function mudarDesafioComConfirmacao() {
+        function fecharModal() {
+            modal.style.display = 'none';
+            localStorage.setItem('tutorial_visto', 'true');
+        }
+
+        function mudarMeta() {
             if (dadosSalvos.length > 0) {
-                let confirmar = confirm("Trocar a meta pode esconder valores já pagos. Quer continuar?");
+                let confirmar = confirm("Mudar a meta vai recalcular a grade. Deseja continuar?");
                 if (confirmar) {
                     gerarGrade();
                 } else {
-                    seletor.value = desafioAtual; 
+                    seletor.value = metaAtual; 
                 }
             } else {
                 gerarGrade();
             }
         }
 
+        // Função Matemática para descobrir quantos números precisamos
+        // Fórmula de Gauss: Soma = (n * (n + 1)) / 2
+        // Invertendo para achar 'n' baseado na Meta (Soma)
+        function calcularNumeroMaximo(valorMeta) {
+            // n^2 + n - 2*Meta = 0
+            let delta = 1 - 4 * 1 * (-2 * valorMeta);
+            let n = (-1 + Math.sqrt(delta)) / 2;
+            return Math.ceil(n); // Arredonda para cima
+        }
+
         function gerarGrade() {
             grid.innerHTML = ''; 
-            const maximo = seletor.value;
-            desafioAtual = maximo;
+            const valorMeta = parseInt(seletor.value);
+            metaAtual = valorMeta;
+            
+            // Calcula até que número precisamos ir (Ex: pra 10k, vamos até o número 141)
+            const maximoNumeros = calcularNumeroMaximo(valorMeta);
+            
             total = 0; 
+            localStorage.setItem('piggy_meta', valorMeta);
 
-            localStorage.setItem('meuCofre_desafio', maximo);
+            // Aviso para metas gigantes
+            if (maximoNumeros > 1000) {
+                // Se for 1 milhão, dá mais de 1400 botões. Isso pode pesar um pouco.
+                console.log("Gerando grade gigante...");
+            }
 
-            for (let i = 1; i <= maximo; i++) {
+            for (let i = 1; i <= maximoNumeros; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
                 btn.className = 'botao-valor';
@@ -181,12 +309,32 @@
                 }
 
                 btn.onclick = function() {
-                    // Adicionei vibração no celular quando clica!
-                    if (navigator.vibrate) navigator.vibrate(50);
+                    if (navigator.vibrate) navigator.vibrate(40); // Vibração suave
 
                     if (btn.classList.contains('pago')) {
                         btn.classList.remove('pago');
                         total -= i;
                         dadosSalvos = dadosSalvos.filter(item => item !== i);
                     } else {
-                        btn.classList.add
+                        btn.classList.add('pago');
+                        total += i;
+                        dadosSalvos.push(i);
+                    }
+                    atualizarTela();
+                };
+
+                grid.appendChild(btn);
+            }
+            atualizarTela();
+        }
+
+        function atualizarTela() {
+            displayTotal.innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            localStorage.setItem('piggy_dados', JSON.stringify(dadosSalvos));
+        }
+
+        // Inicia o app
+        gerarGrade();
+    </script>
+</body>
+</html>
