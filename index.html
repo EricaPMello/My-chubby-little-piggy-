@@ -107,7 +107,7 @@
             gap: 12px;
             max-width: 800px;
             margin: 0 auto;
-            padding-bottom: 60px;
+            padding-bottom: 40px; /* Reduzi um pouco pois agora tem FAQ embaixo */
         }
 
         .botao-valor {
@@ -136,15 +136,74 @@
             box-shadow: 0 4px 0 #1aa179;
         }
 
+        /* --- FAQ (ESTILOS DO FAQ REINSERIDOS) --- */
+        .faq-container {
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: left;
+        }
+        
+        .faq-titulo {
+            text-align: center;
+            color: #d63384;
+            font-family: 'Fredoka', cursive;
+            margin-bottom: 20px;
+        }
+
+        details {
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            border: 2px solid #f8d7da;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        summary {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #555;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::after {
+            content: '+'; 
+            font-size: 1.5rem;
+            color: #20c997;
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        details[open] summary::after {
+            content: '-';
+            color: #d63384;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid #eee;
+            background-color: #fffbfd;
+            color: #d63384;
+        }
+
+        .faq-resposta {
+            padding: 15px;
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
         /* --- POP-UP (MODAL) --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 240, 245, 0.95); /* Fundo um pouco mais sólido para leitura */
-            display: flex; /* Começa visível */
+            background: rgba(255, 240, 245, 0.95); 
+            display: flex; 
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Z-index altíssimo para garantir que fique por cima */
+            z-index: 9999; 
         }
         
         .modal-box {
@@ -177,7 +236,7 @@
             background: #d63384;
             color: white;
             border: none;
-            padding: 15px 40px; /* Botão bem grande */
+            padding: 15px 40px; 
             font-size: 1.3rem;
             font-weight: bold;
             border-radius: 50px;
@@ -240,6 +299,38 @@
 
     <div class="grid-container" id="grid"></div>
 
+    <div class="faq-container">
+        <h2 class="faq-titulo">Dúvidas Frequentes</h2>
+        
+        <details>
+            <summary>Onde fica guardado meu dinheiro?</summary>
+            <div class="faq-resposta">
+                No seu banco de preferência! Este app serve apenas como um "mapa do tesouro" para você acompanhar seu progresso visualmente.
+            </div>
+        </details>
+
+        <details>
+            <summary>Se eu fechar o app, perco tudo?</summary>
+            <div class="faq-resposta">
+                Não! O app salva seu progresso automaticamente na memória do seu celular ou computador. Pode fechar e voltar amanhã que estará tudo aqui.
+            </div>
+        </details>
+
+        <details>
+            <summary>Por que os números pulam?</summary>
+            <div class="faq-resposta">
+                Usamos uma mágica matemática chamada "Soma de Gauss". Em vez de juntar de 1 em 1 real, você junta valores maiores para atingir a meta mais rápido!
+            </div>
+        </details>
+        
+        <details>
+            <summary>Posso mudar a meta no meio?</summary>
+            <div class="faq-resposta">
+                Pode, mas tenha cuidado! Ao mudar a meta, a grade é recalculada. Recomendamos terminar uma meta antes de começar outra.
+            </div>
+        </details>
+    </div>
+
     <footer>Feito com carinho! 💖</footer>
 
     <script>
@@ -268,15 +359,14 @@
         let metaAtual = localStorage.getItem(STORAGE_KEY_META) || "10000"; 
         
         // 1. Configuração do Modal (Pop-up)
-        // Se já viu o tutorial, esconde o modal imediatamente
         if (localStorage.getItem(STORAGE_KEY_TUTORIAL) === 'true') {
             modal.style.display = 'none';
         }
 
         // Evento de Clique no Botão "Começar"
         btnComecar.addEventListener('click', function() {
-            modal.style.display = 'none'; // Fecha o modal
-            localStorage.setItem(STORAGE_KEY_TUTORIAL, 'true'); // Salva que já viu
+            modal.style.display = 'none'; 
+            localStorage.setItem(STORAGE_KEY_TUTORIAL, 'true'); 
         });
 
         // 2. Configuração do Seletor
