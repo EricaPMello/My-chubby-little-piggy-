@@ -12,10 +12,10 @@
     <style>
         /* --- ESTILOS GERAIS --- */
         body { 
-            font-family: 'Quicksand', 'Verdana', sans-serif; /* Se der erro, usa Verdana */
+            font-family: 'Quicksand', 'Verdana', sans-serif;
             text-align: center; 
             background-color: #fff0f5; /* Fundo rosinha bem claro */
-            padding: 10px;
+            padding: 15px;
             margin: 0;
             -webkit-tap-highlight-color: transparent;
         }
@@ -25,81 +25,89 @@
             font-family: 'Fredoka', cursive;
             color: #d63384; /* Rosa escuro */
             font-size: 1.8rem;
-            margin: 10px 0;
+            margin: 15px 0;
             text-shadow: 2px 2px 0px #fff;
         }
         
         /* --- CABEÇALHO (PLACAR) --- */
         .placar {
             background: #ffffff;
-            padding: 20px 10px;
-            border-radius: 20px;
+            padding: 20px 15px; /* Ajustei o padding lateral */
+            border-radius: 25px;
             box-shadow: 0 8px 20px rgba(214, 51, 132, 0.15); /* Sombra rosada */
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             position: sticky;
-            top: 5px; 
-            z-index: 50; /* Menor que o pop-up */
+            top: 10px; 
+            z-index: 50;
             border: 2px solid #f8d7da;
+            max-width: 600px; /* Limita a largura do cartão em PCs */
+            margin-left: auto;
+            margin-right: auto;
         }
 
+        /* --- CORREÇÃO DO TAMANHO DA IMAGEM --- */
         .img-header {
-            width: 220px; /* Aumentei bastante a imagem */
-            max-width: 80%;
-            height: auto;
+            width: 100%;          /* Tenta ocupar 100% da largura do cartão branco */
+            max-width: 550px;     /* Mas limita a 550px para não explodir em telas gigantes */
+            height: auto;         /* Mantém a proporção */
             border-radius: 15px;
-            margin-bottom: 5px;
+            margin-bottom: 15px;  /* Aumentei um pouco o espaço embaixo */
             display: block;
             margin-left: auto;
             margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Uma sombrinha leve na imagem para destacar */
         }
 
         .placar p { 
             margin: 10px 0 0 0; 
             color: #888; 
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: bold;
         }
 
         .total { 
             font-family: 'Fredoka', sans-serif;
             font-size: 2.8rem; 
-            color: #20c997; /* Verde bonito */
+            color: #20c997; /* Verde menta */
             font-weight: 600; 
-            margin-top: 5px;
+            margin-top: 10px;
             background: #e6fffa;
-            border-radius: 10px;
-            padding: 5px;
+            border-radius: 12px;
+            padding: 5px 10px;
+            display: inline-block; /* Para o fundo verde ficar só em volta do número */
         }
 
         /* --- SELETOR DE METAS --- */
         .container-seletor {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         label {
             display: block;
             font-weight: bold;
             color: #d63384;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
         #seletorMeta {
             padding: 15px;
             font-size: 1.1rem;
             font-family: 'Quicksand', sans-serif;
             font-weight: bold;
-            color: #333;
+            color: #d63384;
             border-radius: 15px;
             border: 2px solid #d63384;
             background-color: #fff;
             width: 100%;
             max-width: 350px;
             outline: none;
+            cursor: pointer;
         }
 
         /* --- GRADE DE NÚMEROS --- */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); 
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); /* Botões um pouco maiores */
+            gap: 12px;
             max-width: 800px;
             margin: 0 auto;
             padding-bottom: 60px;
@@ -109,14 +117,17 @@
             background: #ffffff;
             color: #555;
             border: 2px solid #eee;
-            min-height: 65px;
+            min-height: 70px; /* Botões mais altos */
             font-family: 'Fredoka', sans-serif;
-            font-size: 1.3rem; /* Letra maior */
-            border-radius: 15px;
+            font-size: 1.3rem;
+            border-radius: 18px;
             cursor: pointer;
             box-shadow: 0 4px 0 #eee; /* Efeito 3D simples */
-            transition: transform 0.1s;
+            transition: transform 0.1s, background-color 0.2s;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .botao-valor:active { 
@@ -136,28 +147,28 @@
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(255, 240, 245, 0.8); /* Fundo rosinha transparente */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2000; /* Fica acima de tudo */
-            backdrop-filter: blur(3px);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
         }
         
         .modal-box {
             background: white;
-            padding: 30px;
-            border-radius: 25px;
-            width: 90%;
+            padding: 35px 25px;
+            border-radius: 30px;
+            width: 85%;
             max-width: 400px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            border: 4px solid #d63384;
+            box-shadow: 0 20px 50px rgba(214, 51, 132, 0.2);
+            border: 3px solid #d63384;
             animation: surgir 0.4s ease-out;
         }
 
         @keyframes surgir {
-            from { transform: scale(0.5); opacity: 0; }
+            from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
@@ -165,33 +176,48 @@
             font-family: 'Fredoka', cursive;
             color: #d63384;
             margin-top: 0;
+            font-size: 1.8rem;
         }
 
         .modal-box p {
             font-size: 1.1rem;
-            line-height: 1.5;
-            color: #555;
+            line-height: 1.6;
+            color: #666;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        
+        .destaque-tutorial {
+             color: #20c997;
+             font-weight: bold;
         }
 
         .btn-fechar {
             background: #d63384;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 15px 35px;
             font-size: 1.2rem;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            margin-top: 15px;
+            margin-top: 20px;
             font-family: 'Quicksand', sans-serif;
+            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
+            transition: transform 0.1s;
+        }
+        
+        .btn-fechar:active {
+            transform: scale(0.95);
         }
 
         /* --- RODAPÉ --- */
         footer {
-            margin-top: 30px;
-            font-size: 0.8rem;
+            margin-top: 40px;
+            font-size: 0.9rem;
             color: #aaa;
-            padding-bottom: 20px;
+            padding-bottom: 30px;
+            font-weight: bold;
         }
 
     </style>
@@ -200,141 +226,8 @@
 
     <div id="tutorialModal" class="modal-overlay">
         <div class="modal-box">
-            <h2>Bem-vindo ao Cofrinho! 🐷</h2>
-            <p>1. Escolha sua meta financeira.</p>
-            <p>2. A grade mostrará valores de R$ 1,00 até o valor necessário para atingir a meta.</p>
-            <p>3. Deposite o valor no seu banco e marque o número aqui!</p>
-            <button class="btn-fechar" onclick="fecharModal()">Começar a Poupar!</button>
-        </div>
-    </div>
-
-    <h1>My chubby little Piggy</h1>
-
-    <div class="placar">
-        <img src="cofrinho.png" alt="Porquinho fofo" class="img-header">
-        
-        <p>Você já guardou:</p>
-        <div class="total" id="displayTotal">R$ 0,00</div>
-    </div>
-
-    <div class="container-seletor">
-        <label for="seletorMeta">Qual é o seu sonho?</label>
-        <select id="seletorMeta" onchange="mudarMeta()">
-            <option value="10000">Meta: R$ 10.000,00</option>
-            <option value="20000">Meta: R$ 20.000,00</option>
-            <option value="50000">Meta: R$ 50.000,00</option>
-            <option value="100000">Meta: R$ 100.000,00</option>
-            <option value="500000">Meta: R$ 500.000,00</option>
-            <option value="1000000">Meta: R$ 1.000.000,00</option>
-        </select>
-    </div>
-
-    <div class="grid-container" id="grid">
-        </div>
-
-    <footer>
-        Desenvolvido com carinho 💖
-    </footer>
-
-    <script>
-        const grid = document.getElementById('grid');
-        const displayTotal = document.getElementById('displayTotal');
-        const seletor = document.getElementById('seletorMeta');
-        const modal = document.getElementById('tutorialModal');
-        let total = 0;
-        
-        let dadosSalvos = JSON.parse(localStorage.getItem('piggy_dados')) || [];
-        let metaAtual = localStorage.getItem('piggy_meta') || "10000"; // Padrão 10k
-        
-        // Inicialização
-        seletor.value = metaAtual;
-        
-        // Verifica se o usuário já viu o tutorial (opcional, aqui mostramos sempre ao recarregar para teste)
-        // Se quiser ocultar depois da primeira vez, descomente a linha abaixo:
-        // if(localStorage.getItem('tutorial_visto')) modal.style.display = 'none';
-
-        function fecharModal() {
-            modal.style.display = 'none';
-            localStorage.setItem('tutorial_visto', 'true');
-        }
-
-        function mudarMeta() {
-            if (dadosSalvos.length > 0) {
-                let confirmar = confirm("Mudar a meta vai recalcular a grade. Deseja continuar?");
-                if (confirmar) {
-                    gerarGrade();
-                } else {
-                    seletor.value = metaAtual; 
-                }
-            } else {
-                gerarGrade();
-            }
-        }
-
-        // Função Matemática para descobrir quantos números precisamos
-        // Fórmula de Gauss: Soma = (n * (n + 1)) / 2
-        // Invertendo para achar 'n' baseado na Meta (Soma)
-        function calcularNumeroMaximo(valorMeta) {
-            // n^2 + n - 2*Meta = 0
-            let delta = 1 - 4 * 1 * (-2 * valorMeta);
-            let n = (-1 + Math.sqrt(delta)) / 2;
-            return Math.ceil(n); // Arredonda para cima
-        }
-
-        function gerarGrade() {
-            grid.innerHTML = ''; 
-            const valorMeta = parseInt(seletor.value);
-            metaAtual = valorMeta;
-            
-            // Calcula até que número precisamos ir (Ex: pra 10k, vamos até o número 141)
-            const maximoNumeros = calcularNumeroMaximo(valorMeta);
-            
-            total = 0; 
-            localStorage.setItem('piggy_meta', valorMeta);
-
-            // Aviso para metas gigantes
-            if (maximoNumeros > 1000) {
-                // Se for 1 milhão, dá mais de 1400 botões. Isso pode pesar um pouco.
-                console.log("Gerando grade gigante...");
-            }
-
-            for (let i = 1; i <= maximoNumeros; i++) {
-                const btn = document.createElement('button');
-                btn.innerText = i;
-                btn.className = 'botao-valor';
-                
-                if (dadosSalvos.includes(i)) {
-                    btn.classList.add('pago');
-                    total += i;
-                }
-
-                btn.onclick = function() {
-                    if (navigator.vibrate) navigator.vibrate(40); // Vibração suave
-
-                    if (btn.classList.contains('pago')) {
-                        btn.classList.remove('pago');
-                        total -= i;
-                        dadosSalvos = dadosSalvos.filter(item => item !== i);
-                    } else {
-                        btn.classList.add('pago');
-                        total += i;
-                        dadosSalvos.push(i);
-                    }
-                    atualizarTela();
-                };
-
-                grid.appendChild(btn);
-            }
-            atualizarTela();
-        }
-
-        function atualizarTela() {
-            displayTotal.innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            localStorage.setItem('piggy_dados', JSON.stringify(dadosSalvos));
-        }
-
-        // Inicia o app
-        gerarGrade();
-    </script>
-</body>
-</html>
+            <h2>Bem-vindo(a)! 🐷💕</h2>
+            <p>🐷 <b>1. Escolha sua meta:</b> Selecione o valor total que você quer juntar.</p>
+            <p>🔢 <b>2. A mágica da matemática:</b> O app cria uma grade inteligente. Você não precisa de milhares de números!</p>
+            <p>💰 <b>3. Comece a poupar:</b> Guarde o dinheiro de verdade e marque o número correspondente aqui. <span class="destaque-tutorial">Vamos lá!</span></p>
+            <button class="btn-fechar" onclick="fecharModal()">Começar!</button>
