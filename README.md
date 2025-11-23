@@ -20,7 +20,7 @@ O projeto é uma **Web Application (SPA)** responsiva, otimizada para uso em dis
 ## 📸 Demonstração Visual
 
 ![Screenshot do App](./screenshot_app.jpeg)
-*(Adicione um print da tela do seu app aqui no repositório com o nome screenshot_app.png)*
+
 
 👉 **[Acesse o projeto online aqui](https://ericapmello.github.io/My-chubby-little-piggy-/)**
 
