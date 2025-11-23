@@ -2,102 +2,137 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Meu Porquinho Gordinho</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
     <style>
-        /* Estilos Gerais */
+        /* --- ESTILOS GERAIS --- */
         body { 
-            font-family: sans-serif; 
+            font-family: 'Quicksand', sans-serif; /* Fonte do corpo */
             text-align: center; 
-            background-color: #f0f2f5; 
-            padding: 20px;
+            background-color: #f7f9fc; /* Fundo bem clarinho */
+            padding: 15px;
             margin: 0;
+            -webkit-tap-highlight-color: transparent; /* Remove pisca azul no celular */
         }
         
-        /* O mostrador de saldo (Cabeçalho) */
+        /* --- CABEÇALHO (PLACAR) --- */
         .placar {
-            background: #fff;
-            padding: 15px; /* Um pouco menos de espaçamento interno para acomodar a imagem */
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: #ffffff;
+            padding: 20px 15px;
+            border-radius: 25px; /* Bordas bem redondas */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* Sombra suave e moderna */
             margin-bottom: 25px;
             position: sticky;
-            top: 10px; /* Um pequeno espaço do topo */
-            z-index: 100; /* Garante que fique por cima dos números ao rolar */
+            top: 10px; 
+            z-index: 100;
+            border: 1px solid #edf2f7;
         }
 
-        /* --- ESTILO DA NOVA IMAGEM --- */
         .img-header {
-            max-width: 100%; /* Garante que ela não estoure a tela do celular */
-            height: auto;    /* Mantém a proporção correta (não achata o porco) */
-            border-radius: 12px; /* Bordas arredondadas para combinar com o cartão */
-            margin-bottom: 15px; /* Espaço entre a imagem e o texto */
-            display: block;
+            max-width: 140px; /* Tamanho ideal */
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Sombra na própria imagem */
         }
 
-        /* Textos do placar */
-        .placar p { margin: 0; color: #666; font-size: 0.9rem;}
-        .total { font-size: 2.2rem; color: #2ecc71; font-weight: 800; margin-top: 5px;}
+        .placar p { 
+            margin: 5px 0 0 0; 
+            color: #8898aa; 
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
 
-        /* O Seletor de Desafio */
+        .total { 
+            font-family: 'Fredoka', sans-serif; /* Fonte gordinha para o dinheiro */
+            font-size: 2.5rem; 
+            color: #2dce89; /* Verde menta vibrante */
+            font-weight: 600; 
+            margin-top: 5px;
+            text-shadow: 1px 1px 0px #bcefd0;
+        }
+
+        /* --- SELETOR --- */
         #seletorDesafio {
-            padding: 10px 15px;
+            padding: 12px 20px;
             font-size: 1rem;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            margin-bottom: 25px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            color: #525f7f;
+            border-radius: 50px; /* Formato de pílula */
+            border: 2px solid #e9ecef;
+            margin-bottom: 30px;
             background-color: #fff;
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
-        /* A Grade de Números */
+        /* --- GRADE DE NÚMEROS --- */
         .grid-container {
             display: grid;
-            /* Cria colunas automaticamente, com largura mínima de 65px */
-            grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); 
+            /* Otimizado para caber bem em qualquer celular */
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); 
             gap: 12px;
-            max-width: 600px; /* Evita que fique muito largo em telas grandes */
-            margin: 0 auto; /* Centraliza a grade na tela */
-            padding-bottom: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-bottom: 50px;
         }
 
         .botao-valor {
-            background: #e9ecef;
-            color: #495057;
+            background: #ffffff;
+            color: #8898aa;
             border: none;
-            padding: 15px 5px; /* Mais altura, menos largura no padding */
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 12px;
+            height: 60px; /* Altura fixa para ficar quadradinho fofo */
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.2rem;
+            border-radius: 18px; /* Quase um círculo */
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico */
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.05), 0 1px 3px rgba(0, 0, 0, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .botao-valor:active { transform: scale(0.95); }
+        /* Efeito ao passar o mouse ou tocar */
+        .botao-valor:active { 
+            transform: scale(0.90); 
+        }
 
-        /* Classe para quando o valor for pago */
+        /* --- ESTADO PAGO --- */
         .pago {
-            background-color: #2ecc71;
+            background: linear-gradient(135deg, #2dce89 0%, #2dcecc 100%); /* Degradê bonito */
             color: white;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); /* Sombra interna para dar profundidade */
+            font-weight: 600;
+            box-shadow: 0 7px 14px rgba(45, 206, 137, 0.3); /* Sombra colorida brilhante */
+            transform: translateY(-2px); /* Sobe um pouquinho */
         }
+
     </style>
 </head>
 <body>
 
     <div class="placar">
-        <img src="cofrinho.png" alt="Cofre de porquinho dourado" class="img-header">
+        <img src="cofrinho.png" alt="Cofre de porquinho" class="img-header">
         
-        <p>Total Guardado:</p>
+        <p>Total Acumulado</p>
         <div class="total" id="displayTotal">R$ 0,00</div>
     </div>
 
     <select id="seletorDesafio" onchange="mudarDesafioComConfirmacao()">
-        <option value="200">Desafio até R$ 200</option>
-        <option value="250">Desafio até R$ 250</option>
-        <option value="300">Desafio até R$ 300</option>
+        <option value="200">💰 Meta de R$ 200</option>
+        <option value="250">💰 Meta de R$ 250</option>
+        <option value="300">💰 Meta de R$ 300</option>
     </select>
 
     <div class="grid-container" id="grid">
@@ -109,21 +144,17 @@
         const seletor = document.getElementById('seletorDesafio');
         let total = 0;
         
-        // Carrega dados salvos ou inicia vazios
         let dadosSalvos = JSON.parse(localStorage.getItem('meuCofre_dados')) || [];
-        // Carrega qual foi o último desafio selecionado
         let desafioAtual = localStorage.getItem('meuCofre_desafio') || "200";
         
-        // Aplica o desafio salvo ao carregar a página
         seletor.value = desafioAtual;
 
         function mudarDesafioComConfirmacao() {
             if (dadosSalvos.length > 0) {
-                let confirmar = confirm("Atenção: Mudar o desafio agora pode ocultar números que você já marcou. Deseja continuar?");
+                let confirmar = confirm("Trocar a meta pode esconder valores já pagos. Quer continuar?");
                 if (confirmar) {
                     gerarGrade();
                 } else {
-                    // Volta o seletor para a opção anterior se a pessoa cancelar
                     seletor.value = desafioAtual; 
                 }
             } else {
@@ -132,12 +163,11 @@
         }
 
         function gerarGrade() {
-            grid.innerHTML = ''; // Limpa a grade
+            grid.innerHTML = ''; 
             const maximo = seletor.value;
             desafioAtual = maximo;
-            total = 0; // Reinicia contagem visual para recalcular
+            total = 0; 
 
-            // Salva a escolha do desafio
             localStorage.setItem('meuCofre_desafio', maximo);
 
             for (let i = 1; i <= maximo; i++) {
@@ -145,41 +175,18 @@
                 btn.innerText = i;
                 btn.className = 'botao-valor';
                 
-                // Verifica se esse número já estava salvo como pago
                 if (dadosSalvos.includes(i)) {
                     btn.classList.add('pago');
                     total += i;
                 }
 
-                // Evento de clique
                 btn.onclick = function() {
+                    // Adicionei vibração no celular quando clica!
+                    if (navigator.vibrate) navigator.vibrate(50);
+
                     if (btn.classList.contains('pago')) {
-                        // Remover pagamento
                         btn.classList.remove('pago');
                         total -= i;
                         dadosSalvos = dadosSalvos.filter(item => item !== i);
                     } else {
-                        // Adicionar pagamento
-                        btn.classList.add('pago');
-                        total += i;
-                        dadosSalvos.push(i);
-                    }
-                    atualizarTela();
-                };
-
-                grid.appendChild(btn);
-            }
-            atualizarTela();
-        }
-
-        function atualizarTela() {
-            displayTotal.innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            // Salva os números marcados
-            localStorage.setItem('meuCofre_dados', JSON.stringify(dadosSalvos));
-        }
-
-        // Inicia o app
-        gerarGrade();
-    </script>
-</body>
-</html>
+                        btn.classList.add
