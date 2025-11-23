@@ -12,50 +12,48 @@
     <style>
         /* --- ESTILOS GERAIS --- */
         body { 
-            font-family: 'Quicksand', 'Verdana', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             text-align: center; 
-            background-color: #fff0f5; /* Fundo rosinha bem claro */
+            background-color: #fff0f5; 
             padding: 15px;
             margin: 0;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* --- TÍTULO DO APP --- */
+        /* --- TÍTULO --- */
         h1 {
             font-family: 'Fredoka', cursive;
-            color: #d63384; /* Rosa escuro */
+            color: #d63384; 
             font-size: 1.8rem;
             margin: 15px 0;
             text-shadow: 2px 2px 0px #fff;
         }
         
-        /* --- CABEÇALHO (PLACAR) --- */
+        /* --- PLACAR --- */
         .placar {
             background: #ffffff;
-            padding: 20px 15px; /* Ajustei o padding lateral */
+            padding: 20px 15px;
             border-radius: 25px;
-            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.15); /* Sombra rosada */
+            box-shadow: 0 8px 20px rgba(214, 51, 132, 0.15);
             margin-bottom: 25px;
             position: sticky;
             top: 10px; 
             z-index: 50;
             border: 2px solid #f8d7da;
-            max-width: 600px; /* Limita a largura do cartão em PCs */
+            max-width: 600px; 
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* --- CORREÇÃO DO TAMANHO DA IMAGEM --- */
         .img-header {
-            width: 100%;          /* Tenta ocupar 100% da largura do cartão branco */
-            max-width: 550px;     /* Mas limita a 550px para não explodir em telas gigantes */
-            height: auto;         /* Mantém a proporção */
+            width: 100%;          
+            max-width: 500px;     
+            height: auto;         
             border-radius: 15px;
-            margin-bottom: 15px;  /* Aumentei um pouco o espaço embaixo */
+            margin-bottom: 15px;  
             display: block;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Uma sombrinha leve na imagem para destacar */
         }
 
         .placar p { 
@@ -68,16 +66,16 @@
         .total { 
             font-family: 'Fredoka', sans-serif;
             font-size: 2.8rem; 
-            color: #20c997; /* Verde menta */
+            color: #20c997; 
             font-weight: 600; 
             margin-top: 10px;
             background: #e6fffa;
             border-radius: 12px;
             padding: 5px 10px;
-            display: inline-block; /* Para o fundo verde ficar só em volta do número */
+            display: inline-block; 
         }
 
-        /* --- SELETOR DE METAS --- */
+        /* --- SELETOR --- */
         .container-seletor {
             margin-bottom: 25px;
         }
@@ -100,13 +98,12 @@
             width: 100%;
             max-width: 350px;
             outline: none;
-            cursor: pointer;
         }
 
-        /* --- GRADE DE NÚMEROS --- */
+        /* --- GRADE --- */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); /* Botões um pouco maiores */
+            grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); 
             gap: 12px;
             max-width: 800px;
             margin: 0 auto;
@@ -117,17 +114,14 @@
             background: #ffffff;
             color: #555;
             border: 2px solid #eee;
-            min-height: 70px; /* Botões mais altos */
+            min-height: 70px; 
             font-family: 'Fredoka', sans-serif;
             font-size: 1.3rem;
             border-radius: 18px;
             cursor: pointer;
-            box-shadow: 0 4px 0 #eee; /* Efeito 3D simples */
-            transition: transform 0.1s, background-color 0.2s;
+            box-shadow: 0 4px 0 #eee; 
+            transition: transform 0.1s;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .botao-valor:active { 
@@ -135,7 +129,6 @@
             box-shadow: none;
         }
 
-        /* --- ESTADO PAGO --- */
         .pago {
             background-color: #20c997;
             color: white;
@@ -147,29 +140,22 @@
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 240, 245, 0.8); /* Fundo rosinha transparente */
-            display: flex;
+            background: rgba(255, 240, 245, 0.95); /* Fundo um pouco mais sólido para leitura */
+            display: flex; /* Começa visível */
             justify-content: center;
             align-items: center;
-            z-index: 2000;
-            backdrop-filter: blur(5px);
+            z-index: 9999; /* Z-index altíssimo para garantir que fique por cima */
         }
         
         .modal-box {
             background: white;
-            padding: 35px 25px;
+            padding: 30px;
             border-radius: 30px;
             width: 85%;
             max-width: 400px;
             text-align: center;
-            box-shadow: 0 20px 50px rgba(214, 51, 132, 0.2);
+            box-shadow: 0 10px 40px rgba(214, 51, 132, 0.3);
             border: 3px solid #d63384;
-            animation: surgir 0.4s ease-out;
-        }
-
-        @keyframes surgir {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
         }
 
         .modal-box h2 {
@@ -180,44 +166,39 @@
         }
 
         .modal-box p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #666;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
             text-align: left;
             margin-bottom: 15px;
         }
         
-        .destaque-tutorial {
-             color: #20c997;
-             font-weight: bold;
-        }
-
         .btn-fechar {
             background: #d63384;
             color: white;
             border: none;
-            padding: 15px 35px;
-            font-size: 1.2rem;
+            padding: 15px 40px; /* Botão bem grande */
+            font-size: 1.3rem;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
             font-family: 'Quicksand', sans-serif;
-            box-shadow: 0 4px 15px rgba(214, 51, 132, 0.3);
-            transition: transform 0.1s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            display: block;
+            width: 100%;
         }
         
         .btn-fechar:active {
-            transform: scale(0.95);
+            transform: scale(0.98);
+            background: #b02a6b;
         }
 
-        /* --- RODAPÉ --- */
         footer {
             margin-top: 40px;
             font-size: 0.9rem;
             color: #aaa;
             padding-bottom: 30px;
-            font-weight: bold;
         }
 
     </style>
@@ -227,7 +208,146 @@
     <div id="tutorialModal" class="modal-overlay">
         <div class="modal-box">
             <h2>Bem-vindo(a)! 🐷💕</h2>
-            <p>🐷 <b>1. Escolha sua meta:</b> Selecione o valor total que você quer juntar.</p>
-            <p>🔢 <b>2. A mágica da matemática:</b> O app cria uma grade inteligente. Você não precisa de milhares de números!</p>
-            <p>💰 <b>3. Comece a poupar:</b> Guarde o dinheiro de verdade e marque o número correspondente aqui. <span class="destaque-tutorial">Vamos lá!</span></p>
-            <button class="btn-fechar" onclick="fecharModal()">Começar!</button>
+            <p>🐷 <b>1. Escolha sua meta:</b> Selecione quanto você quer juntar.</p>
+            <p>🔢 <b>2. Grade inteligente:</b> O app calcula os números para você não ter que marcar milhares de botões.</p>
+            <p>💰 <b>3. Guarde e Marque:</b> Deposite o dinheiro no banco e marque o valor aqui.</p>
+            
+            <button id="btnComecar" class="btn-fechar">Começar!</button>
+        </div>
+    </div>
+
+    <h1>My chubby little Piggy</h1>
+
+    <div class="placar">
+        <img src="cofrinho.png" alt="Porquinho" class="img-header">
+        <p>Você já guardou:</p>
+        <div class="total" id="displayTotal">R$ 0,00</div>
+    </div>
+
+    <div class="container-seletor">
+        <label for="seletorMeta">Qual é o seu sonho?</label>
+        <select id="seletorMeta">
+            <option value="10000">Meta: R$ 10.000,00</option>
+            <option value="20000">Meta: R$ 20.000,00</option>
+            <option value="50000">Meta: R$ 50.000,00</option>
+            <option value="100000">Meta: R$ 100.000,00</option>
+            <option value="250000">Meta: R$ 250.000,00</option>
+            <option value="500000">Meta: R$ 500.000,00</option>
+            <option value="1000000">Meta: R$ 1.000.000,00</option>
+        </select>
+    </div>
+
+    <div class="grid-container" id="grid"></div>
+
+    <footer>Feito com carinho! 💖</footer>
+
+    <script>
+        // --- LÓGICA DO APP ---
+        
+        // Elementos
+        const grid = document.getElementById('grid');
+        const displayTotal = document.getElementById('displayTotal');
+        const seletor = document.getElementById('seletorMeta');
+        const modal = document.getElementById('tutorialModal');
+        const btnComecar = document.getElementById('btnComecar');
+
+        // Chaves de Salvamento
+        const STORAGE_KEY_DADOS = 'piggy_v3_dados';
+        const STORAGE_KEY_META = 'piggy_v3_meta';
+        const STORAGE_KEY_TUTORIAL = 'piggy_v3_tutorial';
+
+        // Carregar dados
+        let dadosSalvos = [];
+        try {
+            dadosSalvos = JSON.parse(localStorage.getItem(STORAGE_KEY_DADOS)) || [];
+        } catch (e) {
+            dadosSalvos = [];
+        }
+        
+        let metaAtual = localStorage.getItem(STORAGE_KEY_META) || "10000"; 
+        
+        // 1. Configuração do Modal (Pop-up)
+        // Se já viu o tutorial, esconde o modal imediatamente
+        if (localStorage.getItem(STORAGE_KEY_TUTORIAL) === 'true') {
+            modal.style.display = 'none';
+        }
+
+        // Evento de Clique no Botão "Começar"
+        btnComecar.addEventListener('click', function() {
+            modal.style.display = 'none'; // Fecha o modal
+            localStorage.setItem(STORAGE_KEY_TUTORIAL, 'true'); // Salva que já viu
+        });
+
+        // 2. Configuração do Seletor
+        seletor.value = metaAtual;
+        seletor.addEventListener('change', function() {
+            if (dadosSalvos.length > 0) {
+                let confirmar = confirm("Mudar a meta vai recalcular a grade. Deseja continuar?");
+                if (confirmar) {
+                    gerarGrade();
+                } else {
+                    seletor.value = metaAtual; 
+                }
+            } else {
+                gerarGrade();
+            }
+        });
+
+        // 3. Funções Matemáticas e de Grade
+        function calcularNumeroMaximo(valorMeta) {
+            let delta = 1 - 4 * 1 * (-2 * valorMeta);
+            let n = (-1 + Math.sqrt(delta)) / 2;
+            return Math.ceil(n); 
+        }
+
+        function gerarGrade() {
+            grid.innerHTML = ''; 
+            const valorMeta = parseInt(seletor.value);
+            metaAtual = valorMeta;
+            const maximoNumeros = calcularNumeroMaximo(valorMeta);
+            let total = 0; 
+            
+            localStorage.setItem(STORAGE_KEY_META, valorMeta);
+
+            for (let i = 1; i <= maximoNumeros; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = 'botao-valor';
+                
+                // Verifica se está pago
+                if (dadosSalvos.includes(i)) {
+                    btn.classList.add('pago');
+                    total += i;
+                }
+
+                // Clique no botão de valor
+                btn.onclick = function() {
+                    if (navigator.vibrate) navigator.vibrate(40); 
+
+                    if (btn.classList.contains('pago')) {
+                        btn.classList.remove('pago');
+                        total -= i;
+                        dadosSalvos = dadosSalvos.filter(item => item !== i);
+                    } else {
+                        btn.classList.add('pago');
+                        total += i;
+                        dadosSalvos.push(i);
+                    }
+                    atualizarTotal(total);
+                };
+                grid.appendChild(btn);
+            }
+            atualizarTotal(total);
+        }
+
+        function atualizarTotal(valorTotal) {
+            displayTotal.innerText = valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            localStorage.setItem(STORAGE_KEY_DADOS, JSON.stringify(dadosSalvos));
+        }
+
+        // Inicia tudo
+        gerarGrade();
+
+    </script>
+</body>
+</html>
